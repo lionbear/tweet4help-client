@@ -9,11 +9,11 @@ module.exports = {
   devtool: 'cheap-module-eval-source-map',
   entry: [
     'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000',
-    './js/index.js'
+    './src/js/index.js'
   ],
   output: {
-    path: __dirname + '/dist/',
-    publicPath: '/dist/',
+    path: __dirname + '/static/js/',
+    publicPath: '/static/js/',
     filename: 'bundle.js',
     hot: true
   },
@@ -21,13 +21,13 @@ module.exports = {
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),
-    devFlagPlugin,
-    new ExtractTextPlugin('app.css')
+    //new ExtractTextPlugin('/static/css/app.css'),
+    devFlagPlugin
   ],
   module: {
     loaders: [
-      { test: /\.js$/, loaders: ['babel'], exclude: /node_modules/ },
-      { test: /\.css$/, loader: ExtractTextPlugin.extract('css-loader?module!cssnext-loader') }
+      { test: /\.js$/, loader: 'babel', exclude: /node_modules/ },
+      { test: /\.scss$/, loaders: ['style','css','sass']}
     ]
   },
   resolve: {

@@ -1,7 +1,7 @@
 import {createStore, applyMiddleware, combineReducers, compose} from 'redux';
 import thunkMiddleware from 'redux-thunk';
 import {devTools, persistState} from 'redux-devtools';
-import * as reducers from '../reducers/index';
+import * as reducers from '../reducers/reducers';
 
 let createStoreWithMiddleware;
 
